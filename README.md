@@ -1,2 +1,1 @@
-# rails_webpack
-rails_webpack 
+# rails_update
