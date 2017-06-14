@@ -24,6 +24,10 @@ ADD ./Gemfile Gemfile
 Add ./Gemfile.lock Gemfile.lock
 RUN bundle install
 
+# yarn install
+ADD ./yarn.lock yarn.lock
+RUN yarn install
+
 #RUN useradd -ms /bin/bash deploy
 RUN mkdir -p /app/
 #RUN chown -R deploy /app
