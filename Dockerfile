@@ -24,13 +24,19 @@ ADD ./Gemfile Gemfile
 Add ./Gemfile.lock Gemfile.lock
 RUN bundle install
 
+# yarn install
+ADD ./yarn.lock yarn.lock
+ADD ./package.json package.json
+RUN yarn install
+
+
 #RUN useradd -ms /bin/bash deploy
 RUN mkdir -p /app/
 #RUN chown -R deploy /app
 #USER deploy
 WORKDIR /app
 
-# yarn install
-ADD ./yarn.lock yarn.lock
-ADD ./package.json package.json
-RUN yarn install
+RUN \
+  cd /app && \
+  cp -rf /node_modules/ /app/
+ 
