@@ -7,10 +7,6 @@ ENV PYTHON_VERSION 3.6.2
 COPY ./Gemfile Gemfile
 COPY ./Gemfile.lock Gemfile.lock
 
-# yarn install
-COPY ./yarn.lock yarn.lock
-COPY ./package.json package.json
-
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
@@ -105,12 +101,14 @@ RUN set -ex \
   mkdir -p /app/
 
 
-#RUN useradd -ms /bin/bash deploy
-#RUN chown -R deploy /app
-#USER deploy
 WORKDIR /app
+
+
+# yarn install
+COPY ./yarn.lock /app/yarn.lock
+COPY ./package.json /app/package.json
 
 RUN \
   cd /app && \
-  cp -rf /node_modules/ /app/
+  yarn install
 
