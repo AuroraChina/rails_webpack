@@ -80,6 +80,7 @@ RUN set -ex \
 	rm -f get-pip.py &&\
   
   apt-get update && apt-get install -y nodejs --no-install-recommends && \
+  npm install -g phantomjs &&\
   # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
   apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && \
 
