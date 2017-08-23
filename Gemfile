@@ -1,11 +1,11 @@
-if ENV['USE_OFFICIAL_GEM_SOURCE']
-  source 'https://rubygems.org'
+if ENV['CHINA']
+  source 'http://gems.ruby-china.org'
 else
-  source 'https://gems.ruby-china.org'
+  source 'https://rubygems.org'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1', '>= 5.1.1'
+gem 'rails', '~> 5.1', '>= 5.1.2'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.4.6'
@@ -17,8 +17,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'webpacker', '~> 2.0'
-
-gem 'foreman', '~> 0.84.0'
 
 #
 gem 'connection_pool', '~> 2.2', '>= 2.2.1'
@@ -67,6 +65,8 @@ gem 'faraday', '~> 0.10.1'
 
 # JSON Library
 gem 'multi_json', '~> 1.12', '>= 1.12.1'
+
+gem 'foreman', '~> 0.84.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
