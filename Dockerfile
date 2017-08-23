@@ -89,9 +89,14 @@ RUN set -ex \
   apt-get update && apt-get install yarn --no-install-recommends && \
   # Libzmq3-dev, for MySQL
   apt-get update && apt-get install -y libzmq3-dev --no-install-recommends && \
+  # install dependencies
+  apt-get update && apt-get install -y \
+    python-tk && \
+    rm -rf /var/lib/apt/lists/* &&\
   # install python-pptx
   pip install python-pptx &&\
   pip install numpy &&\
+  pip install matplotlib &&\
   # bundler
   gem install bundler --no-doc --no-ri && \
   # clean
