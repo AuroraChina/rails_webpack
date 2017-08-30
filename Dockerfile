@@ -79,7 +79,7 @@ RUN set -ex \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py &&\
   
-  apt-get update && apt-get install -y nodejs --no-install-recommends && \
+  apt-get update && apt-get install -y bzip2 nodejs && \
   # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
   apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && \
 
@@ -100,6 +100,7 @@ RUN set -ex \
 
   #install phantomjs
   npm install -g phantomjs &&\
+  npm install pn/fs &&\
   # bundler
   gem install bundler --no-doc --no-ri && \
   # clean
