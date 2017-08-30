@@ -100,7 +100,6 @@ RUN set -ex \
 
   #install phantomjs
   npm install -g phantomjs &&\
-  npm install pn/fs &&\
   # bundler
   gem install bundler --no-doc --no-ri && \
   # clean
