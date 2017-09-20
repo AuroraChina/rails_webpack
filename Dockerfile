@@ -102,6 +102,9 @@ RUN set -ex \
   npm install -g phantomjs &&\
   # bundler
   gem install bundler --no-doc --no-ri && \
+	# add libreoffice
+	apt-get update && apt-get -y -q install libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-core libreoffice-common openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
+
   # clean
   apt-get clean && rm -rf /var/lib/apt/lists/* && \
   bundle install && \
