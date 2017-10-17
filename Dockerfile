@@ -97,6 +97,7 @@ RUN set -ex \
   pip install python-pptx &&\
   pip install numpy &&\
   pip install matplotlib &&\
+  pip install Image &&\
 
   #install phantomjs
   npm install -g phantomjs &&\
