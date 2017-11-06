@@ -115,7 +115,6 @@ RUN set -ex \
 
 WORKDIR /app
 
-
 # yarn install
 COPY ./yarn.lock /app/yarn.lock
 COPY ./package.json /app/package.json
