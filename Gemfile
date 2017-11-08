@@ -1,22 +1,22 @@
 if ENV['CHINA']
-  source 'http://gems.ruby-china.org'
+  source 'https://mirrors.ustc.edu.cn/rubygems/'
 else
   source 'https://rubygems.org'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1', '>= 5.1.2'
+gem 'rails', '~> 5.1', '>= 5.1.4'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.4.6'
+gem 'mysql2', '~> 0.4.9'
 
-gem 'puma', '~> 3.8', '>= 3.8.2'
+gem 'puma', '~> 3.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-gem 'webpacker', '~> 2.0'
+gem 'webpacker', '~> 3.0', '>= 3.0.2'
 
 #
 gem 'connection_pool', '~> 2.2', '>= 2.2.1'
@@ -26,7 +26,7 @@ gem 'redis', '~> 3.3', '>= 3.3.2'
 gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors', '~> 0.4.1'
+gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
 # User system
 gem 'devise', '~> 4.3'
@@ -36,7 +36,7 @@ gem 'devise-encryptable', '~> 0.2.0'
 gem 'active_model_serializers', '~> 0.10.6'
 
 # json web token ruby
-gem 'jwt', '~> 1.5', '>= 1.5.6'
+gem 'jwt', '~> 2.1'
 
 # Read dotenv environment variables
 gem 'dotenv-rails'
@@ -54,7 +54,7 @@ gem 'rubyzip', '~> 1.2.0'
 gem 'roo', '~> 2.5'
 
 # Background processing
-gem 'sidekiq', '~> 4.2.7'
+gem 'sidekiq', '~> 5.0', '>= 5.0.5'
 
 # Zero MQ driver - higher version (2.0.5) is not compatible with our ZeroMq library, and the job
 #                  always fails when closing the context.
@@ -66,7 +66,6 @@ gem 'faraday', '~> 0.10.1'
 # JSON Library
 gem 'multi_json', '~> 1.12', '>= 1.12.1'
 
-gem 'foreman', '~> 0.84.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
