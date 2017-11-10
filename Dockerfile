@@ -98,18 +98,20 @@ RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbo
 
 COPY ./phantomjs /usr/bin/phantomjs
 
-# yarn install
-COPY ./package.json /app/package.json
 # Bundle
 COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
+# Yarn
+
+COPY ./package.json /app/package.json
 
 RUN \
   cd /app && \
   gem install bundler --no-doc --no-ri && \
   bundle install && \
-  yarn install &&\
-  rm -rf ./node_modules
+  yarn intall && \
+  rm -rf package.json &&\
+  rm -rf yarn.lock 
 
 WORKDIR /app
 
