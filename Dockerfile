@@ -109,7 +109,7 @@ RUN \
   cd /app && \
   gem install bundler --no-doc --no-ri && \
   bundle install && \
-  yarn intall && \
+  yarn install && \
   rm -rf package.json &&\
   rm -rf yarn.lock 
 
