@@ -96,8 +96,7 @@ RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbo
   rm -rf libreoffice.tar.gz &&\
   rm -rf LibreOffice_5.4.2.2_Linux_x86-64_deb
 
-COPY ./phantomjs /usr/local/phantomjs
-RUN ln -s /usr/local/phantomjs/bin/phantomjs /usr/bin/
+COPY ./phantomjs /usr/bin/phantomjs
 
 # yarn install
 COPY ./package.json /app/package.json
