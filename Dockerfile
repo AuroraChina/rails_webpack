@@ -3,9 +3,6 @@ MAINTAINER Aurora System <it@aurora-system.com>
 
 # see update.sh for why all "apt-get install"s have to stay as one long line
 ENV PYTHON_VERSION 3.6.2
-# Bundle
-COPY ./Gemfile Gemfile
-COPY ./Gemfile.lock Gemfile.lock
 
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 
@@ -99,19 +96,22 @@ RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbo
   rm -rf libreoffice.tar.gz &&\
   rm -rf LibreOffice_5.4.2.2_Linux_x86-64_deb
 
-RUN npm install -g phantomjs
-
-RUN gem install bundler --no-doc --no-ri && \
-    bundle install && \
-    yarn install
-
-WORKDIR /app
+COPY ./phantomjs /usr/local/phantomjs
+RUN ln -s /usr/local/phantomjs/bin/phantomjs /usr/bin/
 
 # yarn install
 COPY ./package.json /app/package.json
+# Bundle
+COPY ./Gemfile /app/Gemfile
+COPY ./Gemfile.lock /app/Gemfile.lock
 
 RUN \
   cd /app && \
+  gem install bundler --no-doc --no-ri && \
+  bundle install && \
   yarn install &&\
   rm -rf ./node_modules
+
+WORKDIR /app
+
 
