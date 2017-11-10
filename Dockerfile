@@ -71,12 +71,12 @@ RUN set -ex \
   # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
   apt-get install -y mysql-client sqlite3 --no-install-recommends && \
 
-  curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y nodejs --no-install-recommends && \
+  curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install -y nodejs --no-install-recommends && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list && \
-  apt-get update && apt-get install yarn --no-install-recommends && \
+  apt-get update && apt-get install yarn && \
   # Libzmq3-dev, for MySQL
-  apt-get install -y libzmq3-dev --no-install-recommends && \
+  apt-get install -y libzmq3-dev && \
   # install dependencies
   apt-get install -y \
     python-tk && \
@@ -87,30 +87,17 @@ RUN set -ex \
   pip install matplotlib &&\
   pip install Image &&\
 
-  #install phantomjs
-  #npm install -g phantomjs &&\
-  # bundler
-  #gem install bundler --no-doc --no-ri && \
-  # add libreoffice
-  # apt-get update && apt-get -y -q install libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-core libreoffice-common openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
-  # add libreoffice
-
-
-
-  # clean
-  #apt-get clean && rm -rf /var/lib/apt/lists/* && \
-  #bundle install && \
-  #yarn install && \
   mkdir -p /app/
-  #apt-get update && apt-get -y -q install libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-core libreoffice-common openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
-  
+
 RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
-   #apt-get update && apt-get -y -q install libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-core libreoffice-common openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
+
   wget -O libreoffice.tar.gz 'http://free.nchc.org.tw/tdf/libreoffice/stable/5.4.2/deb/x86_64/LibreOffice_5.4.2_Linux_x86-64_deb.tar.gz' &&\
   tar -xvf libreoffice.tar.gz &&\
   cd LibreOffice_5.4.2.2_Linux_x86-64_deb/DEBS &&\
   dpkg -i *.deb &&\
-  apt-get clean && rm -rf /var/lib/apt/lists/*
+  apt-get clean && rm -rf /var/lib/apt/lists/* &&\
+  rm -rf libreoffice.tar.gz &&\
+  rm -rf LibreOffice_5.4.2.2_Linux_x86-64_deb
 
 RUN npm install -g phantomjs
 
@@ -125,5 +112,6 @@ COPY ./package.json /app/package.json
 
 RUN \
   cd /app && \
-  yarn install
+  yarn install &&\
+  rm -rf ./node_modules
 
