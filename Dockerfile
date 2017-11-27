@@ -86,6 +86,7 @@ RUN set -ex \
   pip install numpy &&\
   pip install matplotlib &&\
   pip install Image &&\
+  pip install coloredlogs &&\
 
   #install phantomjs
   #npm install -g phantomjs &&\
