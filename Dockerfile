@@ -83,6 +83,7 @@ RUN set -ex \
   pip install numpy &&\
   pip install matplotlib &&\
   pip install Image &&\
+  pip install coloredlogs &&\
 
   mkdir -p /app/
 
