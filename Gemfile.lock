@@ -101,10 +101,10 @@ GEM
     erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
@@ -321,7 +321,7 @@ DEPENDENCIES
   devise (~> 4.3)
   devise-encryptable (~> 0.2.0)
   dotenv-rails
-  factory_girl_rails (~> 4.8)
+  factory_bot_rails
   faraday (~> 0.10.1)
   ffi-rzmq (= 2.0.4)
   jwt (~> 2.1)
@@ -349,4 +349,4 @@ DEPENDENCIES
   webpacker (~> 3.0, >= 3.0.2)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
