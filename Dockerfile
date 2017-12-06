@@ -90,7 +90,7 @@ RUN set -ex \
 RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
   wget -c 'https://aurorasystem-my.sharepoint.com/:u:/g/personal/zhen_guo_aurora-system_com/ESsN1S3fL2BBldRduIyyK3wBJupE2D98wf9ymoj1xsUaSQ?e=d27fdd3cd3b54c9685c446eedf1afe50' -O libreoffice.tar.gz &&\
   tar -xvf libreoffice.tar.gz &&\
-  cd LibreOffice_5.4.2.2_Linux_x86-64_deb/DEBS &&\
+  cd LibreOffice_5.4.3.2_Linux_x86-64_deb/DEBS &&\
   dpkg -i *.deb &&\
   apt-get clean && rm -rf /var/lib/apt/lists/* &&\
   rm -rf libreoffice.tar.gz &&\
@@ -99,9 +99,7 @@ RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbo
 COPY ./phantomjs /usr/bin/phantomjs
 
 # Bundle
-COPY ./Gemfile /app/Gemfile
-COPY ./Gemfile.lock /app/Gemfile.lock
-# Yarn
+COPY ./Gemfile* /app/
 
 RUN \
   cd /app && \
