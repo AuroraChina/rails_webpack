@@ -100,11 +100,13 @@ COPY ./phantomjs /usr/bin/phantomjs
 
 # Bundle
 COPY ./Gemfile* /app/
+COPY ./package.json /app/
 
 RUN \
   cd /app && \
   gem install bundler --no-doc --no-ri && \
-  bundle install
+  bundle install && \
+  yarn
 
 WORKDIR /app
 
