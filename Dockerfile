@@ -88,8 +88,7 @@ RUN set -ex \
   mkdir -p /app/
 
 RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
-
-  wget -O libreoffice.tar.gz 'http://free.nchc.org.tw/tdf/libreoffice/stable/5.4.2/deb/x86_64/LibreOffice_5.4.2_Linux_x86-64_deb.tar.gz' &&\
+  wget -c 'https://aurorasystem-my.sharepoint.com/:u:/g/personal/zhen_guo_aurora-system_com/ESsN1S3fL2BBldRduIyyK3wBJupE2D98wf9ymoj1xsUaSQ?e=d27fdd3cd3b54c9685c446eedf1afe50' -O libreoffice.tar.gz &&\
   tar -xvf libreoffice.tar.gz &&\
   cd LibreOffice_5.4.2.2_Linux_x86-64_deb/DEBS &&\
   dpkg -i *.deb &&\
