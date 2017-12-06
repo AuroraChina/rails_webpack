@@ -104,15 +104,10 @@ COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
 # Yarn
 
-COPY ./package.json /app/package.json
-
 RUN \
   cd /app && \
   gem install bundler --no-doc --no-ri && \
-  bundle install && \
-  yarn install && \
-  rm -rf package.json &&\
-  rm -rf yarn.lock 
+  bundle install
 
 WORKDIR /app
 
