@@ -22,7 +22,7 @@ gem 'webpacker', '~> 3.0', '>= 3.0.2'
 gem 'connection_pool', '~> 2.2', '>= 2.2.1'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0', '>= 4.0.1'
+gem 'redis', '~> 3.3', '>= 3.3.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
@@ -78,7 +78,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem "factory_bot_rails"
   gem 'database_cleaner', '~> 1.5.3'
-
+  
   # Annotate models
   gem 'annotate', '~> 2.7.1'
 end
