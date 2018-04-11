@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.4
 MAINTAINER Aurora System <it@aurora-system.com>
 
 # see update.sh for why all "apt-get install"s have to stay as one long line
@@ -48,8 +48,7 @@ RUN set -ex \
   cd /usr/local/bin \
 	&& ln -s idle3 idle \
 	&& ln -s pydoc3 pydoc \
-	&& ln -s python3 python \
-	&& ln -s python3-config python-config &&\
+	&& ln -s python3 python \ && ln -s python3-config python-config &&\
 
   set -ex; \
 	\
@@ -101,6 +100,7 @@ COPY ./phantomjs /usr/bin/phantomjs
 # Bundle
 COPY ./Gemfile* /app/
 COPY ./package.json /app/
+COPY ./yarn.lock /app/
 
 RUN \
   cd /app && \
