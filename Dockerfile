@@ -78,11 +78,11 @@ RUN set -ex \
     python-tk && \
     rm -rf /var/lib/apt/lists/* &&\
   # install python-pptx
-  pip install python-pptx &&\
   pip install numpy &&\
   pip install matplotlib &&\
   pip install Image &&\
   pip install coloredlogs &&\
+  pip install python-pptx &&\
 
   mkdir -p /app/
 
