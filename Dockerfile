@@ -7,7 +7,7 @@ ENV PYTHON_VERSION 3.6.2
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 9.0.1
+ENV PYTHON_PIP_VERSION 18.0
 
 RUN set -ex \
 	&& buildDeps=' \
@@ -43,6 +43,7 @@ RUN set -ex \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	\
 	&& rm -rf /usr/src/python &&\
+	python3 --version	&& \
 ##
 # make some useful symlinks that are expected to exist
   cd /usr/local/bin \
@@ -61,7 +62,13 @@ RUN set -ex \
 	; \
 	pip --version; \
 	\
-	rm -f get-pip.py &&\
+		find /usr/local -depth \
+			\( \
+				\( -type d -a \( -name test -o -name tests \) \) \
+				-o \
+				\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+			\) -exec rm -rf '{}' +; \
+		rm -f get-pip.py &&\
   
   apt-get update && apt-get install -y bzip2 && \
   # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
@@ -73,20 +80,20 @@ RUN set -ex \
   apt-get update && apt-get install yarn && \
   # Libzmq3-dev, for MySQL
   apt-get install -y libzmq3-dev && \
-  # install dependencies
+	# install dependencies
   apt-get install -y \
     python-tk && \
-    rm -rf /var/lib/apt/lists/* &&\
   # install python-pptx
   pip install numpy &&\
-  pip install matplotlib &&\
+	apt-get update && apt-get install -y python-matplotlib &&\
   pip install Image &&\
   pip install coloredlogs &&\
   pip install python-pptx &&\
+	
 
   mkdir -p /app/
 
-RUN apt-get update && apt-get -y -q install  ure   openjdk-7-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-droid fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa && apt-get -q -y remove libreoffice-gnome &&\
+RUN apt-get update && apt-get -y -q install ure openjdk-8-jre fonts-opensymbol hyphen-en-us fonts-dejavu fonts-dejavu-core fonts-dejavu-extra && apt-get -q -y remove libreoffice-gnome &&\
   wget -c 'https://aurorasystem-my.sharepoint.com/:u:/g/personal/zhen_guo_aurora-system_com/ESsN1S3fL2BBldRduIyyK3wBJupE2D98wf9ymoj1xsUaSQ?e=d27fdd3cd3b54c9685c446eedf1afe50' -O libreoffice.tar.gz &&\
   tar -xvf libreoffice.tar.gz &&\
   cd LibreOffice_5.4.3.2_Linux_x86-64_deb/DEBS &&\
