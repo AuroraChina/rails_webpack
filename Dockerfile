@@ -55,19 +55,13 @@ RUN set -ex \
 	\
 	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
 	\
-	python get-pip.py \
+	python3 get-pip.py \
 		--disable-pip-version-check \
 		--no-cache-dir \
 		"pip==$PYTHON_PIP_VERSION" \
 	; \
 	pip --version; \
 	\
-		find /usr/local -depth \
-			\( \
-				\( -type d -a \( -name test -o -name tests \) \) \
-				-o \
-				\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
-			\) -exec rm -rf '{}' +; \
 		rm -f get-pip.py &&\
   
   apt-get update && apt-get install -y bzip2 && \
@@ -85,7 +79,8 @@ RUN set -ex \
     python-tk && \
   # install python-pptx
   pip install numpy &&\
-	apt-get update && apt-get install -y python-matplotlib &&\
+	# apt-get update && apt-get install -y python-matplotlib &&\
+	# pip install matplotlib &&\
   pip install Image &&\
   pip install coloredlogs &&\
   pip install python-pptx &&\
@@ -115,6 +110,7 @@ RUN \
   bundle install && \
   yarn
 
+CMD ['pip', 'install', 'matplotlib=2.0.1']
 WORKDIR /app
 
 
